@@ -23,3 +23,13 @@ case
 	when dept_id = 6 then salary *0.1
 end as bonus
 from parks_and_recreation.employee_salary;
+
+
+select gender ,avg(`max(age)`)
+from
+(select gender , avg(age),max(age),min(age),count(age)
+from parks_and_recreation.employee_demographics
+group by gender 
+) as agg_table
+group by gender;
+
